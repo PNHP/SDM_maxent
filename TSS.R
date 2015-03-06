@@ -6,10 +6,10 @@
 # Updated: 2015-03-05
 #
 # Updates:
-#  
+# * 2015-03-06 - added possible values for the threshold rule
 #
 # To Do List/Future Ideas:
-# *eliminate ones critical values for the same variable
+# * put the threshold rule into a variable
 #---------------------------------------------------------------------------------------------
 
 # based on the script by  referenced here:
@@ -47,10 +47,31 @@ lapply(listaoutput, function(nome){
   read.csv("maxentResults.csv")->maxres
     
   # Set the threshold rule here
-  threshold<-maxres[maxres[,1]==nome,"Maximum.training.sensitivity.plus.specificity.logistic.threshold"]
-  bin.prob<-maxres[maxres[,1]==nome,"Maximum.training.sensitivity.plus.specificity.binomial.probability"]
-  # other possible choices are:
-
+  threshold<-maxres[maxres[,1]==nome,"X10.percentile.training.presence.logistic.threshold"]
+  bin.prob<-maxres[maxres[,1]==nome,"X10.percentile.training.presence.binomial.probability"]
+  # other possible choices are (cut and paste as needed:
+  # "Fixed.cumulative.value.1.logistic.threshold"                                       
+  # "Fixed.cumulative.value.1.binomial.probability"                                     
+  # "Fixed.cumulative.value.5.logistic.threshold"                                       
+  # "Fixed.cumulative.value.5.binomial.probability"                                                                    
+  # "Fixed.cumulative.value.10.logistic.threshold"                                                                                                                                                                        
+  # "Fixed.cumulative.value.10.binomial.probability"                                                                       
+  # "Minimum.training.presence.logistic.threshold"                                                                                                                                                                          
+  # "Minimum.training.presence.binomial.probability"                                                                
+  # "X10.percentile.training.presence.logistic.threshold"                                                                                                                                             
+  # "X10.percentile.training.presence.binomial.probability"                                               
+  # "Equal.training.sensitivity.and.specificity.logistic.threshold"                                                                                                   
+  # "Equal.training.sensitivity.and.specificity.binomial.probability"                                 
+  # "Maximum.training.sensitivity.plus.specificity.logistic.threshold"                                                                                       
+  # "Maximum.training.sensitivity.plus.specificity.binomial.probability"                                     
+  # "Equal.test.sensitivity.and.specificity.logistic.threshold"                                                                                                                     
+  # "Equal.test.sensitivity.and.specificity.binomial.probability"                                       
+  # "Maximum.test.sensitivity.plus.specificity.logistic.threshold"                                                
+  # "Maximum.test.sensitivity.plus.specificity.binomial.probability"                    
+  # "Balance.training.omission..predicted.area.and.threshold.value.logistic.threshold"       
+  # "Balance.training.omission..predicted.area.and.threshold.value.binomial.probability"   
+  # "Equate.entropy.of.thresholded.and.original.distributions.logistic.threshold"               
+  # "Equate.entropy.of.thresholded.and.original.distributions.binomial.probability" 
   
   # Number of values greater and less than the threshold test
   sum(testpp > threshold) -> majortest
